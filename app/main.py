@@ -1,5 +1,5 @@
 from contextlib import asynccontextmanager
-
+import os
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
@@ -18,7 +18,7 @@ async def lifespan(app: FastAPI):
 # @asynccontextmanager
 # async def lifespan(app: FastAPI):
 #     yield
-
+PORT = int(os.getenv("PORT", "8000"))
 
 app = FastAPI(
     title="Setu Payment Reconciliation Service",
