@@ -5,18 +5,19 @@ from fastapi.responses import JSONResponse
 
 from app.core.config import settings
 
-from app.db.database import Base, engine
+# from app.db.database import Base, engine
 from app.routers import events, transactions, reconciliation
-
-# @asynccontextmanager
-# async def lifespan(app: FastAPI):
-#     if settings.APP_ENV != "test":
-#         Base.metadata.create_all(bind=engine)
-#     yield
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    if settings.APP_ENV != "test":
+        Base.metadata.create_all(bind=engine)
     yield
+
+
+# @asynccontextmanager
+# async def lifespan(app: FastAPI):
+#     yield
 
 
 app = FastAPI(
