@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 
 from app.core.config import settings
 
-# from app.db.database import Base, engine
+from app.db.database import Base, engine
 from app.routers import events, transactions, reconciliation
 
 @asynccontextmanager
